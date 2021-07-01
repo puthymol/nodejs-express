@@ -1,10 +1,12 @@
-const studentService = require("../src/services/student.service")
+const studentController = require("../src/controller/student.controller")
+const prefix = "/student"
 
-const prefix = "/student";
 module.exports = (app) => {
-    app.get(prefix+"/get", (req, res) => {
-        studentService.get(req, res)
+    app.post(prefix+"/post", (req, res) => {
+        studentController.post(req, res)
     })
-    app.post(prefix+"/post", (req, res) => res.send("POST"));
-    return app;
-};
+
+    app.post(prefix+"/post-validate", (req, res) => {
+       studentController.postValidate(req, res)
+    })
+}

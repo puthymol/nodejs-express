@@ -1,12 +1,13 @@
-const StudentRequest = require("../models/student-request")
+const studentService = {
+     post(req, res) {
+        console.log(req.username)
+        return "Good "+req.username
+    },
 
-module.exports = {
-    get
+    postValidate(req, res) {
+        console.log(req)
+         return "Good Post"
+    }
 }
 
-async function get(req, res){
-    console.log(JSON.stringify(req.body));
-    let student = JSON.parse(JSON.stringify(req.body), StudentRequest);
-    console.log(student.username)
-    res.send("Good bro "+student.username)
-}
+module.exports = studentService
